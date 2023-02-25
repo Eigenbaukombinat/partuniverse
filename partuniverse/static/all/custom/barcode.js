@@ -1,29 +1,22 @@
 $(document).ready(function($){
 
 
-$('#activate_barcode').on('click', function() 
-	{ 
-		$('#reader').show();
-
-
-
-var html5QrcodeScanner = new Html5QrcodeScanner(
-	"reader", 
-	{ 
+$('#activate_barcode').on('click', function() { 
+	$('#reader_outer').show();
+	const options = {
 		fps: 20, 
-		qrbox: 400, 
+		qrbox: {height: 200, width: 400}, 
 	  	rememberLastUsedCamera: true,
-	  	// Only support camera scan type.
 	  	supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA],
-		experimentalFeatures: {
-        	useBarCodeDetectorIfSupported: true
-    	} });
-
-
-
-html5QrcodeScanner.render(onScanSuccess);
-
-	}); 
+		experimentalFeatures: { useBarCodeDetectorIfSupported: true	}
+	}
+    var html5QrcodeScanner = new Html5QrcodeScanner("reader", options);
+	var render_res = html5QrcodeScanner.render(onScanSuccess);
+	$('#close_dialog').on("click", function(){
+		$('#html5-qrcode-button-camera-stop').click();
+		$('#reader_outer').hide();
+	})
+}); 
 
 
 function onScanSuccess(decodedText, decodedResult) {
@@ -41,7 +34,7 @@ function onScanSuccess(decodedText, decodedResult) {
 		$('input[name=search]').val(decodedText);
 		$('form').submit();
 	} else if (cur_val == decodedText) {
-		$('#reader').hide();
+		$('#reader_outer').hide();
 	}
  }
 

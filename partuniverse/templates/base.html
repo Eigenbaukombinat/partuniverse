@@ -16,8 +16,11 @@
     <title>{% block head_title %}Start{% endblock %} — Partuniverse</title>
   </head>
   <body>
-    <div id="reader" style="display:none"></div>
-
+    <div id="reader_outer" style="display:none">
+      <button id="close_dialog" class="html5-qrcode-element" type="button">Close</button>
+      <div id="reader">
+      </div>
+    </div>
     <header class="ui fixed inverted menu">
       <div class="ui main container">
         <a
