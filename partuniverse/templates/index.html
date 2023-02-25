@@ -6,18 +6,22 @@
 
 {% block content %}
 	<h2 class="ui top attached header">{% trans "Quick start" %}</h2>
-	<div class="ui attached segment"
+	<div class="ui attached segment">
 	<h3>{% trans "Quicksearch" %}</h3>
-	<form class="ui attached segment form" action={% url "part_list" %} method="GET">
-		<input type="text" name="search" placeholder="{% trans "Search in part names" %}" value="{{ view.search }}" />
+	<form class="ui attached segment form" action='{% url "part_list" %}' method="GET">
+	<input type="text" name="search" placeholder='{% trans "Search in part names / SKU" %}' value="{{ view.search }}" /> <a id="activate_barcode">|| ||| | ||||</a>
 	</form>
 	</div>
 	<div class="ui attached segment">
 		<ul>
-			<li><a href="{% url "part_list" %}">{% trans "Parts" %}</a></li>
-			<li><a href="{% url "storage_list" %}">{% trans "Storage places" %}</a></li>
-			<li><a href="{% url "category_list" %}">{% trans "Categories" %}</a></li>
+			<li><a href='{% url "part_list" %}'>{% trans "Parts" %}</a></li>
+			<li><a href='{% url "storage_list" %}'>{% trans "Storage places" %}</a></li>
+			<li><a href='{% url "category_list" %}'>{% trans "Categories" %}</a></li>
 		</ul>
 	</div>
+	<script>
+
+
+	</script>
 	{{ dashboard.render }}
 {% endblock %}

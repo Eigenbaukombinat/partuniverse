@@ -1,0 +1,17 @@
+#activate_barcode {
+    position: absolute;
+    right: 25px;
+    cursor: pointer;
+    top: 23px;
+}
+
+#reader {
+    z-index:1;
+    background-color: white !important;
+    position: fixed !important;
+    top: 40px;
+    left: 50%;
+    width: 600px;
+    margin-left: -250px;
+    height: 500px;
+}
