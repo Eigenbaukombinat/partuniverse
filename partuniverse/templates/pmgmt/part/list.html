@@ -28,9 +28,10 @@
 
 <p>
 </p>
-<form class="ui form" action="." method="GET">
-  <input type="text" name="search" placeholder="{% trans "Search in part names" %}" value="{{ view.search }}" />
-</form>
+<form class="ui attached segment form" action="." method="GET">
+
+<input type="text" name="search" placeholder='{% trans "Search in part names / SKU" %}' value="{{ view.search }}" /> <a id="activate_barcode">|| ||| | ||||</a>
+  </form>
 
 {% if object_list %}
 
