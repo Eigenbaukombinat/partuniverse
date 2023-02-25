@@ -1,7 +1,29 @@
 $(document).ready(function($){
 
 
-$('#activate_barcode').on('click', function() { $('#reader').toggle();}); 
+$('#activate_barcode').on('click', function() 
+	{ 
+		$('#reader').show();
+
+
+
+var html5QrcodeScanner = new Html5QrcodeScanner(
+	"reader", 
+	{ 
+		fps: 20, 
+		qrbox: 400, 
+	  	rememberLastUsedCamera: true,
+	  	// Only support camera scan type.
+	  	supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA],
+		experimentalFeatures: {
+        	useBarCodeDetectorIfSupported: true
+    	} });
+
+
+
+html5QrcodeScanner.render(onScanSuccess);
+
+	}); 
 
 
 function onScanSuccess(decodedText, decodedResult) {
@@ -22,11 +44,8 @@ function onScanSuccess(decodedText, decodedResult) {
 		$('#reader').hide();
 	}
  }
-var html5QrcodeScanner = new Html5QrcodeScanner(
-	"reader", { fps: 20, qrbox: 400, experimentalFeatures: {
-        useBarCodeDetectorIfSupported: true
-    } });
-html5QrcodeScanner.render(onScanSuccess);
+
+
 
 
 });
